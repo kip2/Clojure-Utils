@@ -1,4 +1,4 @@
-(ns markdown-utils.core
+(ns obsidian-utils.core
   (:require [clj-clip.core :as clip]))
 
 ;; サンプルリスト
@@ -30,6 +30,9 @@
   (-> lst
       (list->obsidian-link-checklist label)
       (clip/write-clip)))
+(obsidian-checklist->clip convert-list)
 
 ;; 使用例
 (obsidian-checklist->clip-labeled convert-list "(Clojure)")
+
+

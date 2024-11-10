@@ -1,6 +1,6 @@
-(ns markdown-utils.core-test
+(ns obsidian-utils.core-test
   (:require [clojure.test :refer :all]
-            [markdown-utils.core :refer :all]))
+            [obsidian-utils.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."
