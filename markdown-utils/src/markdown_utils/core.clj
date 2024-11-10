@@ -10,27 +10,26 @@
                    "re-find"
                    "spit"])
 
-(defn convert-to-markdown-checklist
+(defn list->obsidian-link-checklist
   ([lst]
-   (convert-to-markdown-checklist lst nil))
+   (list->obsidian-link-checklist lst nil))
   ([lst label]
    (let [convert-checklist (fn [element] (str " - [ ] [[" element label "]]\n"))]
      (apply str (map convert-checklist lst)))))
 
 
-(defn convert-md-checklist-with-output-txt [lst output-name]
-  (->> (convert-to-markdown-checklist lst)
+(defn obsidian-checklist->file [lst output-name]
+  (->> (list->obsidian-link-checklist lst)
        (spit output-name)))
 
-(defn convert-md-checklist-and-copy-to-clipboard [lst]
-  (->> (convert-to-markdown-checklist lst)
+(defn obsidian-checklist->clip [lst]
+  (->> (list->obsidian-link-checklist lst)
        (clip/write-clip)))
 
-(defn convert-checklist-with-clojure-and-copy [lst]
+(defn obsidian-checklist->clip-labeled [lst label]
   (-> lst
-      (convert-to-markdown-checklist "(Clojure)")
+      (list->obsidian-link-checklist label)
       (clip/write-clip)))
 
 ;; 使用例
-(convert-checklist-with-clojure-and-copy convert-list)
-
+(obsidian-checklist->clip-labeled convert-list "(Clojure)")
