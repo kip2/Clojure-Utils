@@ -1,5 +1,8 @@
 # obsidian_utils
 
+Obsidianで使えるユーティリティーツール。
+
+
 ## Usage
 
 ```clojure
